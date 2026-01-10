@@ -41,7 +41,7 @@ const certificates = [
     id: 4,
     title: "Data Analytics Internship",
     image: "/Internship.png",
-    issuer: "Company Name", 
+    issuer: "VOIS", 
     date: "2024",
     description: "Internship focused on Data Analytics." 
   },
