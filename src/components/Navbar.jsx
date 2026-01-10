@@ -61,7 +61,7 @@ export default function Navbar() {
             relative flex items-center justify-between px-6 
             transition-all duration-300
             ${scrolled 
-                ? 'w-[90%] md:w-[70%] h-16 rounded-full glass bg-white/50 dark:bg-black/20 shadow-xl border-zinc-200/50 dark:border-white/5 backdrop-blur-md' 
+                ? 'w-[95%] md:w-[85%] lg:w-[75%] max-w-7xl h-16 rounded-full glass bg-white/50 dark:bg-black/20 shadow-xl border-zinc-200/50 dark:border-white/5 backdrop-blur-md' 
                 : 'w-full max-w-7xl h-20 bg-transparent border-transparent'
             }
         `}
@@ -112,7 +112,7 @@ export default function Navbar() {
         </motion.div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <button
               key={link.name}
