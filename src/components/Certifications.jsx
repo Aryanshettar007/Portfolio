@@ -19,7 +19,6 @@ import nagarjunaImg from '../assets/NAGARJUNA-VIBEXATHON.jpeg';
 import presidencyImg from '../assets/PRESIDENCY-PITCHATHON.jpeg';
 import gdgEclipseImg from '../assets/GDG-ECLIPSE.jpeg';
 import uiPathImg from '../assets/UI-PATH.jpeg';
-import nasikoBootcampImg from '../assets/NASIKO-BOOTCAMP.jpeg';
 import nasikoBuildathonImg from '../assets/NASIKO-BUILDATHON.jpeg';
 import awsImg from '../assets/AWS.jpeg';
 
@@ -97,14 +96,6 @@ const certificates = [
     issuer: "UiPath",
     date: "2026",
     description: "Diploma of completion for Introduction to Agentic Automation course by UiPath."
-  },
-  {
-    id: 16,
-    title: "NASIKO AI Bootcamp",
-    image: nasikoBootcampImg,
-    issuer: "Dev Aarambh",
-    date: "2026",
-    description: "Completion of NASIKO AI Bootcamp by Dev Aarambh."
   },
   {
     id: 17,
