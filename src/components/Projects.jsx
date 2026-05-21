@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { Github, ExternalLink, ArrowUpRight, Sparkles, Terminal, Cpu } from 'lucide-react';
 import MedifindImg from '../assets/Medifind.png';
+import GoViralImg from '../assets/GoViral.png';
 import LegalEaseImg from '../assets/legalease.png';
 import QuickGPTImg from '../assets/QuickGPT.png';
 
@@ -12,6 +13,14 @@ const projects = [
     links: { live: "https://medi-find-impact-x.vercel.app/", github: "https://github.com/Aryanshettar007/MediFind-Impact-X" },
     gradient: "from-blue-500/20 to-indigo-500/20",
     image: MedifindImg
+  },
+  {
+    title: "GoViral-Pro",
+    description: "AI-powered influencer marketing platform that enables brand-creator collaborations using machine learning to optimize campaign pricing, secure Stripe payments, and real-time negotiations.",
+    tech: ["MERN", "Flask", "Scikit-Learn", "Stripe", "Socket.io", "Tailwind CSS"],
+    links: { live: "https://www.youtube.com/watch?v=RIzXyACbldY", liveLabel: "Watch Demo" },
+    gradient: "from-purple-500/20 to-pink-500/20",
+    image: GoViralImg
   },
   {
     title: "LegalEase",
@@ -79,7 +88,7 @@ export default function Projects() {
                                 <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
                             </div>
                             {/* App Content Placeholder */}
-                            <div className="p-0 h-full w-full relative group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div className="p-0 h-full w-full relative group-hover:scale-105 transition-transform duration-700 ease-out flex items-center justify-center bg-zinc-50 dark:bg-zinc-950">
                                 {project.image ? (
                                     <img 
                                         src={project.image} 
@@ -87,17 +96,40 @@ export default function Projects() {
                                         className="w-full h-full object-cover object-top opacity-90 transition-opacity duration-500 group-hover:opacity-100"
                                     />
                                 ) : (
-                                    <div className="flex flex-col gap-4 items-center justify-center h-full opacity-50 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 p-8">
-                                        <div className="w-24 h-24 rounded-2xl bg-gradient-to-tr from-zinc-200 to-zinc-100 dark:from-zinc-800 dark:to-zinc-700 mb-4" />
-                                        <div className="w-3/4 h-4 rounded-full bg-zinc-200 dark:bg-zinc-800" />
-                                        <div className="w-1/2 h-4 rounded-full bg-zinc-200 dark:bg-zinc-800" />
+                                    <div className="flex flex-col items-center justify-center h-full w-full p-8 text-center select-none relative overflow-hidden">
+                                        {/* Grid background effect */}
+                                        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-30" />
+                                        
+                                        <div className="relative z-10 flex flex-col items-center gap-4">
+                                            <div className={`w-16 h-16 rounded-2xl bg-gradient-to-tr ${project.gradient} flex items-center justify-center shadow-lg border border-white/10`}>
+                                                {project.title.includes("CreatorRate") ? (
+                                                    <Sparkles className="w-8 h-8 text-indigo-500 animate-pulse" />
+                                                ) : (
+                                                    <Cpu className="w-8 h-8 text-amber-500 animate-pulse" />
+                                                )}
+                                            </div>
+                                            <div>
+                                                <div className="font-display font-bold text-zinc-800 dark:text-zinc-200 text-lg mb-1">{project.title}</div>
+                                                <div className="text-xs text-zinc-500 dark:text-zinc-500 font-mono flex items-center gap-1.5 justify-center">
+                                                    <Terminal className="w-3.5 h-3.5" />
+                                                    production.env
+                                                </div>
+                                            </div>
+                                            
+                                            {/* Simulated Code Lines */}
+                                            <div className="w-64 space-y-2 mt-2 opacity-60 dark:opacity-40">
+                                                <div className="h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-800 w-full" />
+                                                <div className="h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-800 w-5/6 mx-auto" />
+                                                <div className="h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-800 w-4/5 mx-auto" />
+                                            </div>
+                                        </div>
                                     </div>
                                 )}
                             </div>
                         </div>
 
                         {/* Hover Overlay */}
-                        <div className="absolute inset-0 bg-indigo-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-indigo-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                             <motion.div 
                                 initial={false}
                                 whileHover={{ scale: 1.1 }}
@@ -111,12 +143,26 @@ export default function Projects() {
 
                 {/* Project Info */}
                 <div className={`order-1 lg:col-span-5 ${index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'}`}>
+                    {project.subtitle && (
+                        <span className="text-indigo-600 dark:text-indigo-400 font-semibold tracking-wider text-sm uppercase mb-2 block">
+                            {project.subtitle}
+                        </span>
+                    )}
                     <h3 className="text-3xl font-display font-bold text-zinc-900 dark:text-white mb-6 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                         {project.title}
                     </h3>
-                    <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-8 leading-relaxed">
-                        {project.description}
-                    </p>
+                    
+                    {Array.isArray(project.description) ? (
+                        <ul className="list-disc pl-5 space-y-3 text-base text-zinc-600 dark:text-zinc-400 mb-8 leading-relaxed">
+                            {project.description.map((bullet, idx) => (
+                                <li key={idx} className="hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors">{bullet}</li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-8 leading-relaxed">
+                            {project.description}
+                        </p>
+                    )}
                     
                     <div className="flex flex-wrap gap-2 mb-10">
                         {project.tech.map(t => (
@@ -127,24 +173,28 @@ export default function Projects() {
                     </div>
                     
                     <div className="flex gap-6">
-                        <a 
-                            href={project.links.live} 
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-zinc-900 dark:text-white font-semibold hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group/link"
-                        >
-                            <span>Live Demo</span>
-                            <ArrowUpRight size={18} className="group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform" />
-                        </a>
-                        <a 
-                            href={project.links.github} 
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 font-medium hover:text-indigo-600 dark:hover:text-white transition-colors"
-                        >
-                            <Github size={18} />
-                            <span>Source Code</span>
-                        </a>
+                        {project.links.live && (
+                            <a 
+                                href={project.links.live} 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 text-zinc-900 dark:text-white font-semibold hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group/link"
+                            >
+                                <span>{project.links.liveLabel || 'Live Demo'}</span>
+                                <ArrowUpRight size={18} className="group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform" />
+                            </a>
+                        )}
+                        {project.links.github && (
+                            <a 
+                                href={project.links.github} 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 font-medium hover:text-indigo-600 dark:hover:text-white transition-colors"
+                            >
+                                <Github size={18} />
+                                <span>Source Code</span>
+                            </a>
+                        )}
                     </div>
                 </div>
             </motion.div>

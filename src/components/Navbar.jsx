@@ -48,6 +48,7 @@ export default function Navbar() {
     { name: 'About', id: 'about' },
     { name: 'Qualification', id: 'qualification' },
     { name: 'Skills', id: 'skills' },
+    { name: 'Achievements', id: 'achievements' },
     { name: 'Certifications', id: 'certifications' },
     { name: 'Projects', id: 'projects' },
     { name: 'Experience', id: 'experience' },
@@ -61,11 +62,19 @@ export default function Navbar() {
             relative flex items-center justify-between px-6 
             transition-all duration-300
             ${scrolled 
-                ? 'w-[95%] md:w-[85%] lg:w-[75%] h-16 rounded-full glass bg-white/50 dark:bg-black/20 shadow-xl border-zinc-200/50 dark:border-white/5 backdrop-blur-md' 
+                ? 'w-[95%] lg:w-[92%] xl:w-[85%] h-16 rounded-full bg-white/40 dark:bg-black/30 border border-white/40 dark:border-white/10 shadow-[inset_0_1.5px_2.5px_rgba(255,255,255,0.45),_inset_0_-1.5px_2.5px_rgba(0,0,0,0.05),_0_20px_50px_-12px_rgba(0,0,0,0.15)] dark:shadow-[inset_0_1.5px_2.5px_rgba(255,255,255,0.15),_inset_0_-1.5px_2.5px_rgba(0,0,0,0.3),_0_25px_60px_-15px_rgba(0,0,0,0.6)] backdrop-blur-2xl' 
                 : 'w-full max-w-7xl h-20 bg-transparent border-transparent'
             }
         `}
       >
+        {/* Ambient liquid blobs */}
+        {scrolled && (
+          <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none -z-10 opacity-40 dark:opacity-30">
+            <div className="absolute -top-1/2 -left-1/4 w-1/2 h-full bg-gradient-to-r from-indigo-500/40 to-purple-500/40 rounded-full blur-xl animate-[pulse_8s_infinite_alternate]" />
+            <div className="absolute -bottom-1/2 -right-1/4 w-1/2 h-full bg-gradient-to-r from-cyan-500/30 to-emerald-500/30 rounded-full blur-xl animate-[pulse_6s_infinite_alternate-reverse]" />
+          </div>
+        )}
+
         <motion.div 
           className="text-2xl font-display font-bold text-gradient cursor-pointer flex items-center gap-0.5"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -112,12 +121,12 @@ export default function Navbar() {
         </motion.div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-3.5 xl:gap-5">
           {navLinks.map((link) => (
             <button
               key={link.name}
               onClick={() => scrollToSection(link.id)}
-              className="text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+              className="text-xs xl:text-sm font-semibold text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
             >
               {link.name}
             </button>
@@ -144,7 +153,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Toggle */}
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="flex items-center gap-4 lg:hidden">
             <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800">
                 {theme === 'dark' ? <Sun size={20} className="text-zinc-300" /> : <Moon size={20} className="text-zinc-600" />}
             </button>
@@ -160,7 +169,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, scale: 0.95, y: -20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                className="absolute top-20 right-0 left-0 mx-4 p-4 rounded-2xl glass shadow-2xl md:hidden border border-zinc-200 dark:border-zinc-800"
+                className="absolute top-20 right-0 left-0 mx-4 p-4 rounded-2xl bg-white/50 dark:bg-black/40 border border-white/40 dark:border-white/10 shadow-[inset_0_1.5px_2.5px_rgba(255,255,255,0.45),_0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[inset_0_1.5px_2.5px_rgba(255,255,255,0.15),_0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-2xl lg:hidden"
             >
                 <div className="flex flex-col gap-2">
                 {navLinks.map((link) => (

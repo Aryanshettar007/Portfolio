@@ -8,6 +8,7 @@ import Skills from './components/Skills';
 import Certifications from './components/Certifications';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
+import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -22,6 +23,7 @@ function App() {
             <ZoomSection /> {/* Add ZoomSection here */}
             <Qualification />
             <Skills />
+            <Achievements />
             <Certifications />
             <Projects />
             <Experience />

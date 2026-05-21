@@ -1,12 +1,33 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform, useMotionValue, useAnimationFrame, useSpring } from 'framer-motion';
 
-// Using consistent placeholders with gradient backgrounds or simple patterns if images are missing
+// Import certificate images from assets
+import nptelImg from '../assets/NPTEL.png';
+import isroImg from '../assets/ISRO_Certificate.png';
+import oracleImg from '../assets/oracle.png';
+import gdgImg from '../assets/GDG_Certificate_ARYAN_SHETTAR.png';
+import internshipImg from '../assets/Internship.png';
+import techSummitImg from '../assets/TechSummit_Certificate.jpg';
+import aikyamImg from '../assets/AIKYAM.png';
+import dsceImg from '../assets/DSCE.png';
+import sjbitImg from '../assets/SJBIT_Certificate.jpg';
+import samyogImg from '../assets/samyog quiz win .jpg';
+
+// New certificate imports
+import pwRiftImg from '../assets/PW-RIFT.jpeg';
+import nagarjunaImg from '../assets/NAGARJUNA-VIBEXATHON.jpeg';
+import presidencyImg from '../assets/PRESIDENCY-PITCHATHON.jpeg';
+import gdgEclipseImg from '../assets/GDG-ECLIPSE.jpeg';
+import uiPathImg from '../assets/UI-PATH.jpeg';
+import nasikoBootcampImg from '../assets/NASIKO-BOOTCAMP.jpeg';
+import nasikoBuildathonImg from '../assets/NASIKO-BUILDATHON.jpeg';
+import awsImg from '../assets/AWS.jpeg';
+
 const certificates = [
   {
     id: 1,
     title: "Intro to ML",
-    image: "/NPTEL.png", 
+    image: nptelImg, 
     issuer: "NPTEL",
     date: "2025",
     description: "Certification in Introduction to Machine Learning.",
@@ -15,7 +36,7 @@ const certificates = [
   {
     id: 2,
     title: "Space Science Hackathon",
-    image: "/ISRO_Certificate.png",
+    image: isroImg,
     issuer: "ISRO",
     date: "2025",
     description: "Participation in ISRO Space Science Hackathon."
@@ -23,7 +44,7 @@ const certificates = [
   {
     id: 10,
     title: "AI Foundations",
-    image: "/oracle.png",
+    image: oracleImg,
     issuer: "Oracle",
     date: "2025",
     description: "Fundamental concepts of Artificial Intelligence and Machine Learning on OCI.",
@@ -32,15 +53,79 @@ const certificates = [
   {
     id: 3,
     title: "Google Developer Groups",
-    image: "/GDG_Certificate_ARYAN_SHETTAR.png",
+    image: gdgImg,
     issuer: "GDG",
     date: "2025",
     description: "Active participation in Google Developer Groups events."
   },
   {
+    id: 11,
+    title: "RIFT '26 Hackathon",
+    image: pwRiftImg,
+    issuer: "PW Institute of Innovation",
+    date: "2026",
+    description: "Participation in RIFT '26 Hackathon at Unstop Freedom Festival, organised by Physics Wallah Institute of Innovation."
+  },
+  {
+    id: 12,
+    title: "VibeXathon 1.0",
+    image: nagarjunaImg,
+    issuer: "NCET",
+    date: "2026",
+    description: "24-Hour State Level Hackathon organised by Nagarjuna College of Engineering and Technology, March 2026."
+  },
+  {
+    id: 13,
+    title: "InnovateX 4.0 Pitchathon",
+    image: presidencyImg,
+    issuer: "Presidency University",
+    date: "2026",
+    description: "Participation in Pitchathon at InnovateX 4.0 International Tech Fest, April 2026."
+  },
+  {
+    id: 14,
+    title: "Eclipse Hackathon Coordinator",
+    image: gdgEclipseImg,
+    issuer: "JSSATE × IIT Guwahati",
+    date: "2026",
+    description: "Student Coordinator at ECLIPSE 24-Hour Hackathon, sponsored by ISEA Phase III under MeitY, in association with IIT Guwahati."
+  },
+  {
+    id: 15,
+    title: "Agentic Automation",
+    image: uiPathImg,
+    issuer: "UiPath",
+    date: "2026",
+    description: "Diploma of completion for Introduction to Agentic Automation course by UiPath."
+  },
+  {
+    id: 16,
+    title: "NASIKO AI Bootcamp",
+    image: nasikoBootcampImg,
+    issuer: "Dev Aarambh",
+    date: "2026",
+    description: "Completion of NASIKO AI Bootcamp by Dev Aarambh."
+  },
+  {
+    id: 17,
+    title: "Nasiko Buildathon",
+    image: nasikoBuildathonImg,
+    issuer: "Nasiko × DevAarambh",
+    date: "2026",
+    description: "8-hour solo agent-engineering sprint held at Microsoft Office, Prestige Ferns Galaxy, Bengaluru."
+  },
+  {
+    id: 18,
+    title: "AWS Cloud Practitioner Essentials",
+    image: awsImg,
+    issuer: "AWS",
+    date: "2026",
+    description: "Completion of AWS Cloud Practitioner Essentials training and certification."
+  },
+  {
     id: 4,
     title: "Data Analytics Internship",
-    image: "/Internship.png",
+    image: internshipImg,
     issuer: "VOIS", 
     date: "2024",
     description: "Internship focused on Data Analytics." 
@@ -48,7 +133,7 @@ const certificates = [
   {
     id: 5,
     title: "Tech Summit",
-    image: "/TechSummit_Certificate.jpg",
+    image: techSummitImg,
     issuer: "Tech Summit",
     date: "2024",
     description: "Participation in regional technology summit."
@@ -56,7 +141,7 @@ const certificates = [
   {
     id: 6,
     title: "Aikyam Hackathon",
-    image: "/AIKYAM.png",
+    image: aikyamImg,
     issuer: "Aikyam",
     date: "2025",
     description: "Participation in Aikyam Hackathon."
@@ -64,7 +149,7 @@ const certificates = [
   {
     id: 7,
     title: "DSCE Hackathon",
-    image: "/DSCE.png",
+    image: dsceImg,
     issuer: "DSCE",
     date: "2025",
     description: "Participation in Dayananda Sagar College of Engineering Hackathon."
@@ -72,7 +157,7 @@ const certificates = [
   {
     id: 8,
     title: "SJBIT Hackathon",
-    image: "/SJBIT_Certificate.jpg",
+    image: sjbitImg,
     issuer: "SJBIT",
     date: "2025",
     description: "Participation in SJB Institute of Technology Hackathon."
@@ -80,7 +165,7 @@ const certificates = [
   {
     id: 9,
     title: "Samyog Quiz Winner",
-    image: "/samyog.jpg",
+    image: samyogImg,
     issuer: "JSSATE",
     date: "2025",
     description: "2nd Prize Winner in JSSATE Samyog Branch Fest Quiz Event."

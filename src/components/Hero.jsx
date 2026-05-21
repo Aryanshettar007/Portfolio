@@ -13,7 +13,9 @@ export default function Hero() {
   const rotateX = useTransform(ySpring, [-0.5, 0.5], ["7.5deg", "-7.5deg"]);
   const rotateY = useTransform(xSpring, [-0.5, 0.5], ["-7.5deg", "7.5deg"]);
 
-  const [activeId, setActiveId] = useState('main');
+  const [activeId, setActiveId] = useState(() => 
+    typeof window !== 'undefined' && window.innerWidth < 768 ? 'code' : 'main'
+  );
 
   const images = [
     { id: 'main', src: '/hero-main.jpg', alt: 'Profile Main' },
@@ -51,18 +53,9 @@ export default function Hero() {
               initial: false,
               animate: { opacity: 1 },
               className: "absolute inset-0 rounded-[2rem]",
-              style: { transform: "translateZ(20px)" } // Center depth
+              style: { transform: "translateZ(20px)" }
           };
       }
-      
-      // 2. Define who takes TopRight and BottomLeft
-      // Default: main=Center, code=TR, casual=BL, etc.
-      
-      // We need a deterministic but rotating slot assignment based on the active index
-      // Logic: 
-      // Active = Center
-      // (Active + 1) = Top Right
-      // (Active + 2) = Bottom Left
       
       const imgIndex = images.findIndex(i => i.id === imgId);
       const activeImgIndex = images.findIndex(i => i.id === activeId);
@@ -78,7 +71,7 @@ export default function Hero() {
               style: { transform: "translateZ(60px)" }
           };
       } else {
-          // invalid/self case handled by first if, so this must be diff === 2 (Bottom Left)
+          // Bottom Left
            return {
               zIndex: 20,
               className: "absolute -bottom-8 -left-12 w-32 h-32 rounded-2xl border-4 border-white dark:border-zinc-900 hidden md:block",
