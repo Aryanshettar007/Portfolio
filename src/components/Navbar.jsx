@@ -5,7 +5,7 @@ import { useLenis } from '@studio-freight/react-lenis';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
   const [scrolled, setScrolled] = useState(false);
   const lenis = useLenis();
 
