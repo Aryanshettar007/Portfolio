@@ -54,7 +54,7 @@ function ExperienceCard({ exp, index }) {
   const isHighlighted = exp.type === "internship";
 
   return (
-    <div className={`relative w-full ${isHighlighted ? 'min-h-[480px] sm:h-[480px]' : 'h-[450px] sm:h-[400px]'} perspective-1000`}>
+    <div className={`relative w-full ${isHighlighted ? 'h-[500px] sm:h-[480px]' : 'h-[450px] sm:h-[400px]'} perspective-1000`}>
       <motion.div 
         className="w-full h-full relative"
         style={{ transformStyle: "preserve-3d" }}
@@ -63,7 +63,7 @@ function ExperienceCard({ exp, index }) {
       >
         {/* Front Side */}
         <div 
-          className={`absolute inset-0 w-full h-full p-8 md:p-10 rounded-3xl glass bg-white/5 dark:bg-zinc-900/50 border ${exp.theme} flex flex-col justify-between ${isHighlighted ? 'ring-2 ring-red-400/30 dark:ring-red-500/20' : ''}`}
+          className={`absolute inset-0 w-full h-full p-6 sm:p-8 md:p-10 rounded-3xl glass border ${exp.theme} flex flex-col justify-between ${isHighlighted ? 'ring-2 ring-red-400/30 dark:ring-red-500/20' : ''}`}
           style={{ backfaceVisibility: "hidden" }}
         >
           {/* Hover Glow */}
@@ -79,9 +79,9 @@ function ExperienceCard({ exp, index }) {
           
           <div className="flex flex-col h-full justify-between">
             <div>
-              <div className="flex justify-between items-start mb-6">
-                <div className={`p-2 bg-white dark:bg-zinc-800 rounded-2xl shadow-sm hover:scale-110 transition-transform duration-300 ${isHighlighted ? 'ring-1 ring-red-200 dark:ring-red-800/50' : ''}`}>
-                  <img src={exp.logo} alt={exp.org} className="w-14 h-14 object-contain" />
+              <div className="flex justify-between items-start mb-4 sm:mb-6">
+                <div className={`p-1.5 sm:p-2 bg-white dark:bg-zinc-800 rounded-2xl shadow-sm hover:scale-110 transition-transform duration-300 ${isHighlighted ? 'ring-1 ring-red-200 dark:ring-red-800/50' : ''}`}>
+                  <img src={exp.logo} alt={exp.org} className="w-11 h-11 sm:w-14 sm:h-14 object-contain" />
                 </div>
                 <span className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-sm font-semibold text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
                   <Calendar size={14} />
@@ -89,16 +89,16 @@ function ExperienceCard({ exp, index }) {
                 </span>
               </div>
 
-              <h3 className="text-3xl font-bold text-zinc-900 dark:text-white mb-2 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              <h3 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-white mb-1 sm:mb-2 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
                 {exp.role}
               </h3>
-              <div className="text-lg font-medium text-zinc-700 dark:text-zinc-300 mb-5 flex items-center gap-2">
+              <div className="text-base sm:text-lg font-medium text-zinc-700 dark:text-zinc-300 mb-3 sm:mb-5 flex items-center gap-2">
                 {exp.org}
               </div>
               
               {/* Support both string and array descriptions */}
               {Array.isArray(exp.description) ? (
-                <ul className="space-y-2">
+                <ul className="space-y-1.5 sm:space-y-2">
                   {exp.description.map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5 text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
                       <ChevronRight size={14} className="mt-0.5 flex-shrink-0 text-red-500/70 dark:text-red-400/70" />
@@ -114,7 +114,7 @@ function ExperienceCard({ exp, index }) {
             </div>
 
             {((exp.links && exp.links.length > 0) || exp.certificate) && (
-              <div className="mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-700/50 flex flex-wrap gap-6">
+              <div className="mt-4 pt-4 sm:mt-6 sm:pt-6 border-t border-zinc-200 dark:border-zinc-700/50 flex flex-wrap gap-4 sm:gap-6">
                 {exp.links && exp.links.map((link, i) => (
                   <a 
                     key={i}
