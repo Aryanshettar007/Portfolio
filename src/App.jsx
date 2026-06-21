@@ -22,11 +22,11 @@ function App() {
             <About />
             <ZoomSection /> {/* Add ZoomSection here */}
             <Qualification />
+            <Experience />
             <Skills />
             <Achievements />
             <Certifications />
             <Projects />
-            <Experience />
             <Contact />
         </main>
         <Footer />

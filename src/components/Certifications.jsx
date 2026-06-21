@@ -21,6 +21,7 @@ import gdgEclipseImg from '../assets/GDG-ECLIPSE.jpeg';
 import uiPathImg from '../assets/UI-PATH.jpeg';
 import nasikoBuildathonImg from '../assets/NASIKO-BUILDATHON.jpeg';
 import awsImg from '../assets/AWS.jpeg';
+import amigosImg from '../assets/Amigos-Internship.jpg';
 
 const certificates = [
   {
@@ -112,6 +113,14 @@ const certificates = [
     issuer: "AWS",
     date: "2026",
     description: "Completion of AWS Cloud Practitioner Essentials training and certification."
+  },
+  {
+    id: 19,
+    title: "Web Development Internship",
+    image: amigosImg,
+    issuer: "InAmigos Foundation",
+    date: "2026",
+    description: "Successful completion of Web Development Internship at InAmigos Foundation (May 2026)."
   },
   {
     id: 4,

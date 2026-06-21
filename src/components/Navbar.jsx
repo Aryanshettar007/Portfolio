@@ -47,11 +47,11 @@ export default function Navbar() {
   const navLinks = [
     { name: 'About', id: 'about' },
     { name: 'Qualification', id: 'qualification' },
+    { name: 'Experience', id: 'experience' },
     { name: 'Skills', id: 'skills' },
     { name: 'Achievements', id: 'achievements' },
     { name: 'Certifications', id: 'certifications' },
     { name: 'Projects', id: 'projects' },
-    { name: 'Experience', id: 'experience' },
     { name: 'Contact', id: 'contact' },
   ];
 
