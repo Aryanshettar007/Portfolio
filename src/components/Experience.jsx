@@ -54,7 +54,7 @@ function ExperienceCard({ exp, index }) {
   const isHighlighted = exp.type === "internship";
 
   return (
-    <div className={`relative w-full ${isHighlighted ? 'h-[520px] sm:h-[480px]' : 'h-[450px] sm:h-[400px]'} perspective-1000`}>
+    <div className={`relative w-full ${isHighlighted ? 'min-h-[480px] sm:h-[480px]' : 'h-[450px] sm:h-[400px]'} perspective-1000`}>
       <motion.div 
         className="w-full h-full relative"
         style={{ transformStyle: "preserve-3d" }}
